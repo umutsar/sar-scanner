@@ -32,14 +32,16 @@ def port_scanning(ip, port):
         sock.close()
     except socket.error:
         print("Network error!")
+    except:
+        print("An unknown error occurred")
 
 ip_address = input("Enter IP address: ")
 commonly_used_port = [21,22,23,25,53,80,110,115,139,143,161,443,445,514,3306,3389,8080]
 commonly_used_port2 = [11,12,13,21]
 
-print(f"Click 1 to select the most commonly used {len(commonly_used_port)} ports.")
-print("Press 2 to select commonly used ports (Level 2).")
-print("Click 3 to set the scanning range.")
+print(f"-Click 1 to select the most commonly used {len(commonly_used_port)} ports.")
+print("-Press 2 to select commonly used ports (Level 2).")
+print("-Click 3 to set the scanning range.")
 
 entered_ports = input("Enter the numbers (separated by commas): ")
 if entered_ports == "1":
@@ -51,7 +53,7 @@ elif entered_ports == "2":
     print("scanning commonly used ports(level 2)...")
 
 elif entered_ports == "3":
-    print( "Select the port range (including the ones you have chosen).")
+    print("Select the port range (including the ones you have chosen).")
     first_number = input("Starting from which number?")
     last_number = input("At what number will it end?")
     ports = list(range(int(first_number),int(last_number) + 1))
