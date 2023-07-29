@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+import time
+import signal
+import sys
+
+def signal_handler(sig, frame):
+    print("\nsar_scanner has been closed.")
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
+
 import socket
 
 ascii_code = '''
@@ -12,7 +23,13 @@ ascii_code = '''
 
               *************************sar_scanner*************************
 '''
-print(ascii_code)
+def show_ascii_art(art):
+    for line in art.splitlines():
+        print(line)
+        time.sleep(0.05)
+
+show_ascii_art(ascii_code)
+
 print("Firstly enter target ip.")
 print("Then enter port number(s) or choose one of the existing options.")
 print("Finally choose number for timeout.")
@@ -66,4 +83,6 @@ for port in ports:
     port_scanning(ip_address, port)
 
 print(f"Open ports: {open_ports}")
+
 input("Press enter to finish process.")
+
